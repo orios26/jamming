@@ -10,15 +10,44 @@ import Playlist from '../Playlist/Playlist';
 class App extends React.Component {
 constructor(props){
   super(props);
-  this.state = { searchResults: {}};
+  this.state = {searchResults: [], playlistName: 'Da Jamz', playlistTracks: []};
   this.state.searchResults = [
     {
       name: 'Heart Shaped Box',
       artist: 'Nirvana',
       album: 'In Utero',
-      id: 1
+      id: '1'
+    },
+    {
+      name: 'Tiny Dancer',
+      artist: 'Tim McGraw',
+      album: 'Love Story',
+      id: '2'
+    },
+    {
+      name: 'Stronger',
+      artist: 'Brittney Spears',
+      album: 'Oops! I did it again',
+      id: '3'
     }
     ];
+
+    this.state.playlistTracks = [
+      {
+        name: 'Right This Second',
+        artist: 'Deadmau5',
+        album: 'Random Album Title Here',
+        id: '1'
+      },
+      {
+        name: 'Mad Hatter',
+        artist: 'Melanie Martinez',
+        album: 'CryBaby',
+        id: '2'
+      }
+    ];
+
+    //binding the methods with this
   this.addTrack = this.addTrack.bind(this);
   this.removeTrack = this.removeTrack.bind(this);
 }
@@ -26,12 +55,16 @@ constructor(props){
 addTrack(track){
   if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
-  }this.state.playlistTracks.push(track);
+  }let currentTracks = this.state.playlistTracks;
+  currentTracks.push(track);
+  this.setState(this.state.playlistTracks: currentTracks);
 }
 
 removeTrack(track){
   if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
-    this.state.playlistTracks.remove(track);
+    let currentTracks = this.state.playlistTracks;
+    currentTracks.remove(track);
+    this.setState(this.state.playlistTracks: currentTracks);
   }
 }
 
