@@ -53,7 +53,7 @@ constructor(props){
     //binding the methods with this
   this.addTrack = this.addTrack.bind(this);
   this.removeTrack = this.removeTrack.bind(this);
-  this.updatePlaylistName = this.updatePlaylistName.bind(this);
+  this.updatePlayListName = this.updatePlayListName.bind(this);
   this.savePlaylist = this.savePlaylist.bind(this);
   this.search = this.search.bind(this);
 }
@@ -77,14 +77,14 @@ removeTrack(track){
 }
 
 //method to updatePlaylist className
-updatePlaylistName(name){
+updatePlayListName(name){
   this.setState({playlistName: name});
 }
 
 //saveplaylist function
 savePlaylist(){
   let trackURIs = [];
-  this.state.playlistTracks.foreach(track => {
+  this.state.playlistTracks.forEach(track => {
     trackURIs.push(track.uri);
   });
   Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
