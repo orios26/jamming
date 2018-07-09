@@ -88,7 +88,7 @@ savePlaylist(){
     trackURIs.push(track.uri);
   });
   Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
-    this.setState({playlistTracks: [], playlistName: ''});
+    this.setState({playlistTracks: [], playlistName: 'New Playlist'});
   });
 }
 

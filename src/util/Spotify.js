@@ -160,7 +160,8 @@ let playlist_id = jsonResponse.id;
 console.log(playlist_id);
 
 return fetch(`https://api.spotify.com/v1/users/${user_id}/playlists/${playlist_id}/tracks`, {
-headers: {Authorization: `Bearer ${accessToken}`},
+headers: {Authorization: `Bearer ${accessToken}`,
+"Content-Type": 'application/json'},
 method: 'POST',
 body: JSON.stringify({uris: trackURIs})
 });
