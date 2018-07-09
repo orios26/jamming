@@ -13,41 +13,41 @@ constructor(props){
   super(props);
   //creating states for searchResults playlistName and playlistTracks
   //setting playistTracks and searchResults to an array of track objects
-  this.state = {searchResults: [], playlistName: 'Da Jamz', playlistTracks: []};
+  this.state = {searchResults: [], playlistName: '', playlistTracks: []};
   this.state.searchResults = [
-    {
-      name: 'Heart Shaped Box',
-      artist: 'Nirvana',
-      album: 'In Utero',
-      id: '1'
-    },
-    {
-      name: 'Tiny Dancer',
-      artist: 'Tim McGraw',
-      album: 'Love Story',
-      id: '2'
-    },
-    {
-      name: 'Stronger',
-      artist: 'Brittney Spears',
-      album: 'Oops! I did it again',
-      id: '3'
-    }
+    // {
+    //   name: 'Heart Shaped Box',
+    //   artist: 'Nirvana',
+    //   album: 'In Utero',
+    //   id: '1'
+    // },
+    // {
+    //   name: 'Tiny Dancer',
+    //   artist: 'Tim McGraw',
+    //   album: 'Love Story',
+    //   id: '2'
+    // },
+    // {
+    //   name: 'Stronger',
+    //   artist: 'Brittney Spears',
+    //   album: 'Oops! I did it again',
+    //   id: '3'
+    // }
     ];
 
     this.state.playlistTracks = [
-      {
-        name: 'Right This Second',
-        artist: 'Deadmau5',
-        album: 'Random Album Title Here',
-        id: '1'
-      },
-      {
-        name: 'Mad Hatter',
-        artist: 'Melanie Martinez',
-        album: 'CryBaby',
-        id: '2'
-      }
+      // {
+      //   name: 'Right This Second',
+      //   artist: 'Deadmau5',
+      //   album: 'Random Album Title Here',
+      //   id: '1'
+      // },
+      // {
+      //   name: 'Mad Hatter',
+      //   artist: 'Melanie Martinez',
+      //   album: 'CryBaby',
+      //   id: '2'
+      // }
     ];
 
     //binding the methods with this
@@ -71,7 +71,10 @@ addTrack(track){
 removeTrack(track){
   if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
     let currentTracks = this.state.playlistTracks;
-    currentTracks.remove(track);
+    let trackIndex = currentTracks.indexOf(track);
+    if(trackIndex > -1){
+      currentTracks.splice(trackIndex, 1);
+    }
     this.setState({playlistTracks: currentTracks});
   }
 }
