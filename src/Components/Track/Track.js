@@ -28,6 +28,16 @@ constructor(props){
     this.props.onRemove(this.props.track);
   }
 
+  renderPreview(){
+    if(!this.props.track.preview_url){
+      return (<p>No preview available</p>);
+    }else{
+      return(<div><i className="fa fa-play-circle" onClick={this.playAudio()}></i>
+      <i className="fa fa-pause-circle"></i></div>);
+
+    }
+  }
+
   playAudio(){
     let url = this.props.track.preview_url;
     let x = new Audio(url);
@@ -69,8 +79,7 @@ constructor(props){
           <p>{this.props.track.artist} | {this.props.track.album}</p>
           <p>{this.trackDuration()} | {this.checkExplicit()}</p>
           <div className="button-container">
-          <i className="fa fa-play-circle" onClick={this.playAudio()}></i>
-          <i className="fa fa-pause-circle"></i>
+          {this.renderPreview()}
           </div>
         </div>
       {this.renderAction()}
